@@ -113,6 +113,129 @@
             background-size: cover;
             background-position: center;
         }
+
+        /*animations*/
+
+        @keyframes appearAndBounce {
+            0% {
+                opacity: 0;
+                transform: translateY(-500px);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translateY(20px);
+            }
+
+            65% {
+                transform: translateY(-15px);
+            }
+
+            80% {
+                transform: translateY(10px);
+            }
+
+            90% {
+                transform: translateY(-5px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes appearDownToUp {
+            0% {
+                opacity: 0;
+                transform: translateY(500px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes appearLeftToRight {
+            0% {
+                opacity: 0;
+                transform: translateX(-500px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0px);
+            }
+        }
+
+        @keyframes appearRightToLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(500px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0px);
+            }
+        }
+
+        @keyframes scaleUp {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .jy-logo {
+            animation: appearAndBounce 2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+        }
+
+        .titile {
+            animation: appearDownToUp 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+        }
+
+        .line {
+            animation: appearLeftToRight 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+        }
+
+        .subtitle {
+            animation: appearRightToLeft 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+        }
+
+        .link {
+            animation: scaleUp 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+        }
+
+        .appearDownToUp {
+            animation: appearDownToUp 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+            animation-timeline: view();
+            animation-range: entry 20% cover 50%;
+        }
+
+        .appearLeftToRight {
+            animation: appearLeftToRight 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+            animation-timeline: view();
+            animation-range: entry 20% cover 50%;
+        }
+
+        .appearRightToLeft {
+            animation: appearRightToLeft 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+            animation-timeline: view();
+            animation-range: entry 20% cover 50%;
+        }
+
+        .scaleUp {
+            animation: scaleUp 1s linear;
+            animation-timeline: view();
+            animation-range: entry 20% cover 50%;
+        }
     </style>
 </head>
 
@@ -125,20 +248,20 @@
             style="background-image: url('./assets/BG1.png');">
             <div
                 class="w-full h-full flex flex-col items-center justify-center bg-[#56CAFF] bg-opacity-90 backdrop-blur-sm text-center">
-                <div class="my-6">
-                    <div class="mx-auto w-12 h-12 bg-green-500 rounded-full">
+                <div class="my-6 jy-logo">
+                    <div class=" mx-auto w-12 h-12 bg-green-500 rounded-full">
                         <img src="./assets/jy_logo.png" alt="">
                     </div>
                 </div>
-                <h1 class="text-5xl font-bold text-white mb-4 ">
+                <h1 class="titile text-5xl font-bold text-white mb-4 ">
                     <img src="./assets/title.png" class="mx-auto" alt="" width="700">
                 </h1>
                 <!-- <p class="text-xl text-white mb-8">"The Truth Will Set You Free"<br>John 8:32</p> -->
-                <hr class="h-[2px] bg-white mb-8 w-[300px]">
-                <h2 class="text-3xl font-semibold text-white mb-4">Let's Interceed for</h2>
-                <h3 class="text-4xl font-bold text-white mb-8">Veritas</h3>
-                <div class="inline-block bg-white bg-opacity-30 rounded-full px-6 py-3">
-                    <span class="text-xl font-semibold text-white">500 Hours of Adoration</span>
+                <hr class="line h-[2px] bg-white mb-8 w-[300px]">
+                <h2 class="subtitle text-3xl font-semibold text-white mb-4">Let's Interceed for</h2>
+                <h3 class="subtitle text-4xl font-bold text-white mb-8">Veritas</h3>
+                <div class="link inline-block bg-white bg-opacity-30 rounded-full px-6 py-3">
+                    <span class="text-xl font-semibold text-white cursor-pointer">500 Hours of Adoration</span>
                     <span class="ml-2 text-white">↗</span>
                 </div>
             </div>
@@ -146,16 +269,17 @@
 
 
         <!-- live hour section  -->
-        <section
-            class="h-screen text-center min-h-screen bg-gradient-to-br from-blue-300 to-blue-500 flex items-center justify-center"
+        <section class="text-center  bg-gradient-to-br from-blue-300 to-blue-500 flex items-center justify-center"
             style="background-image: url('./assets/BG1.png');">
             <div
-                class="w-full h-full flex items-center place-content-center place-items-center justify-center bg-[#FF5656] bg-opacity-90 backdrop-blur-sm text-center">
-                <div class="flex gap-10 m-auto items-end">
+                class="w-full h-full flex items-center place-content-center place-items-center justify-center bg-[#FF5656] bg-opacity-90 backdrop-blur-sm text-center py-20">
+                <div class="flex flex-wrap justify-center gap-10 m-auto items-end">
                     <p
-                        class="text-[170px] h-[140px] font-bold text-white border-l-2 border-white pl-2 leading-[9.5rem]">
+                        class="appearLeftToRight text-[170px] h-[140px] font-bold text-white border-l-2 border-white pl-2 leading-[9.5rem]">
                         35</p>
-                    <p class="text-white text-[30px] h-[140px] flex items-end text-left italic leading-10">hours of
+                    <p
+                        class="appearRightToLeft text-white text-[30px] h-[140px] flex items-end text-left italic leading-10">
+                        hours of
                         adoration <br>
                         committed for
                         Veritas
@@ -166,21 +290,21 @@
 
 
         <!-- select hour section  -->
-        <section
-            class="h-screen text-center min-h-screen bg-gradient-to-br from-blue-300 to-blue-500 flex items-center justify-center"
+        <section class=" text-center bg-gradient-to-br from-blue-300 to-blue-500 flex items-center justify-center"
             style="background-image: url('./assets/BG1.png');">
             <div
-                class="w-full h-full flex flex-col items-center place-content-center place-items-center justify-center bg-[#FFBB56] bg-opacity-90 backdrop-blur-sm text-center">
-                <h2 class="text-2xl text-gray-800 mb-6">add <br> <span class="font-semibold">your adoration hours</span>
+                class="w-full h-full flex flex-col items-center place-content-center place-items-center justify-center bg-[#FFBB56] bg-opacity-90 backdrop-blur-sm text-center py-10">
+                <h2 class="appearDownToUp text-2xl text-gray-800 mb-6">add <br> <span class="font-semibold">your
+                        adoration hours</span>
                 </h2>
-                <div class="toggle-switch">
+                <div class="scaleUp toggle-switch">
                     <input type="checkbox" id="switch" class="toggle-input">
-                    <label for="switch" class="toggle-label">
-                        <span class="toggle-text toggle-text-left">Offline</span>
-                        <span class="toggle-text toggle-text-right">Online</span>
+                    <label for="switch" class="scaleUp toggle-label">
+                        <span class=" toggle-text toggle-text-left">Offline</span>
+                        <span class="scaleUp toggle-text toggle-text-right">Online</span>
                     </label>
                 </div>
-                <p class="text-sm text-white my-10 italic">
+                <p class="scaleUp text-sm text-white my-10 italic">
                     *If you have less possibility for an offline adoration,<br>
                     please go forward with online
                 </p>
@@ -189,30 +313,31 @@
 
 
         <!-- form hour section  -->
-        <section
-            class="h-screen text-center bg-gradient-to-br from-blue-300 to-blue-500 flex items-center justify-center"
+        <section class=" text-center bg-gradient-to-br from-blue-300 to-blue-500 flex items-center justify-center"
             style="background-image: url('./assets/BG1.png');">
             <div
                 class="w-full h-full flex flex-col items-center place-content-center place-items-center justify-center bg-[#fff] bg-opacity-90 backdrop-blur-sm text-center">
-                <form id="adorationForm" class="bg-white rounded-lg p-4 md:p-6 mb-8 w-full max-w-md">
-                    <h2 class="text-xl font-bold mb-4">Adoration Form</h2>
-                    <div class="mb-4">
-                        <label for="name" class="block mb-2">Name</label>
-                        <input type="text" id="name" name="name" class="w-full border rounded px-2 py-1" required>
+                <form id="adorationForm" class="bg-white rounded-lg p-4 md:p-6 my-8 w-full text-left max-w-md">
+                    <h2 class="text-xl font-bold mb-2">Adoration Form</h2>
+                    <p class="text-sm mb-4 text-[#7A7A7A]">Fill the form below to add your hours of adoration</p>
+                    <div class="mb-4 ">
+                        <label for="name" class="block font-semibold mb-2">Name</label>
+                        <input type="text" id="name" name="name" class="w-full border rounded-md px-2 py-1" required>
                     </div>
                     <div class="mb-4">
-                        <label for="hours" class="block mb-2">Hours of Adoration</label>
-                        <input type="number" id="hours" name="hours" class="w-full border rounded px-2 py-1" required
+                        <label for="hours" class="block font-semibold mb-2">Hours of Adoration</label>
+                        <input type="number" id="hours" name="hours" class="w-full border rounded-md px-2 py-1" required
                             min="1">
                     </div>
                     <input type="hidden" id="adorationMode" name="adorationMode" value="offline">
                     <button type="submit"
-                        class="bg-[#FFC267] text-black px-4 py-2 rounded-full font-bold hover:bg-[#FFB247] transition duration-300">Submit</button>
+                        class="bg-[#FFC267] w-full text-black px-4 py-2 rounded-md font-bold hover:bg-[#FFB247] transition duration-300">Submit</button>
                 </form>
 
-                <div class="bg-gray-800 text-white text-left px-10 md:px-24 py-16 mb-8">
-                    <h2 class="text-xl italic font-bold mb-6">What is Veritas?</h2>
-                    <p class="italic font-regular text-[20px]"><span class="font-semibold">Veritas</span> is an initial
+                <div class="appearDownToUp bg-gray-800 text-white text-left px-10 md:px-24 py-16 mb-8">
+                    <h2 class="appearDownToUp text-xl italic font-bold mb-6">What is Veritas?</h2>
+                    <p class="appearDownToUp italic font-regular text-[20px]"><span class="font-semibold">Veritas</span>
+                        is an initial
                         programme exclusively
                         designed
                         for the
@@ -224,21 +349,23 @@
                         to an
                         encounter with Jesus.
                     </p>
-                    <p class="mt-2 font-bold">This is the moment... go for the truth...</p>
+                    <p class="appearDownToUp mt-2 font-bold">This is the moment... go for the truth...</p>
                 </div>
 
-                <div class="text-center flex mb-8 p-1 bg-[#FFC267] rounded-full ">
-                    <button class=" text-black px-3 text-xl font-bold">Register</button>
-                    <a href=""
-                        class="bg-white/70 px-2 h-[30px] w-[30px] flex justify-center items-center text-black rounded-full">
-                        <img src="./assets/Arrow.png" class="h-[10px]" alt="">
-                    </a>
-                </div>
+                <div class="w-[90%] py-10">
+                    <div class="scaleUp text-center w-fit mx-auto flex mb-8 p-1 bg-[#FFC267] rounded-full">
+                        <button class="text-black px-10 text-[30px] font-bold">Register</button>
+                        <a href=""
+                            class="bg-white/70 px-2 h-[60px] w-[60px] flex justify-center items-center text-black rounded-full">
+                            <img src="./assets/Arrow.png" class="h-[10px]" alt="">
+                        </a>
+                    </div>
 
-                <div class="text-left w-[90%] mt-[40px]">
-                    <p class="font-bold">For more details on registration :</p>
-                    <p>Sebin Jo Saji : <a href="tel:+919400389831" class="font-bold">+91 94003 89831</a> Shelin : <a
-                            href="tel:+919946845520" class="font-bold">+91 99468 45520</a></p>
+                    <div class="text-left mt-[40px]">
+                        <p class="font-bold">For more details on registration :</p>
+                        <p>Sebin Jo Saji : <a href="tel:+919400389831" class="font-bold">+91 94003 89831</a> Shelin : <a
+                                href="tel:+919946845520" class="font-bold">+91 99468 45520</a></p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -250,7 +377,7 @@
             style="background-image: url('./assets/BG1.png');">
             <div
                 class="w-full h-full flex flex-col text-white items-center place-content-center place-items-center justify-center bg-[#4C4C4C]/90 bg-opacity-90 backdrop-blur-lg text-center">
-                <div class="mt-4 text-left w-[90%]">
+                <div class="my-10 text-left w-[90%]">
                     <h3 class="font-bold">Contact Us</h3>
                     <p>Antony Joseph - General Coordinator</p>
                     <p>Libin Abraham - CCT Coordinator</p>
