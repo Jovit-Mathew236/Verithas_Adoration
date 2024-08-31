@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veritas24</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 300px;
+            height: 60px;
+            background-color: #FF7A7A;
+            border-radius: 30px;
+            padding: 5px;
+        }
+
+        @media (min-width: 768px) {
+            .toggle-switch {
+                width: 500px;
+                height: 80px;
+                border-radius: 50px;
+            }
+        }
+
+        .toggle-input {
+            display: none;
+        }
+
+        .toggle-label {
+            position: relative;
+            display: block;
+            height: 100%;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        @media (min-width: 768px) {
+            .toggle-label {
+                border-radius: 50px;
+            }
+        }
+
+        .toggle-label::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            background-color: white;
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+
+        @media (min-width: 768px) {
+            .toggle-label::after {
+                border-radius: 50px;
+            }
+        }
+
+        .toggle-input:checked+.toggle-label::after {
+            left: 50%;
+        }
+
+        .toggle-text {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            text-align: center;
+            width: 50%;
+            z-index: 1;
+            font-weight: bold;
+            transition: 0.3s;
+            font-size: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .toggle-text {
+                font-size: 1.25rem;
+            }
+        }
+
+        .toggle-text-left {
+            left: 0;
+        }
+
+        .toggle-text-right {
+            right: 0;
+        }
+
+        .toggle-text {
+            color: #FF7A7A;
+        }
+
+        .toggle-input:not(:checked)+.toggle-label .toggle-text-right,
+        .toggle-input:checked+.toggle-label .toggle-text-left {
+            color: white;
+        }
+
+        .bg-image {
+            background-image: url('./assets/BG1.png');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-b from-blue-300 via-red-300 to-yellow-200 min-h-screen font-sans">
+    <div class="mx-auto">
+
+        <!-- first section intro -->
+        <header
+            class="h-screen text-center min-h-screen bg-gradient-to-br from-blue-300 to-blue-500 flex items-center justify-center"
+            style="background-image: url('./assets/BG1.png');">
+            <div
+                class="w-full h-full flex flex-col items-center justify-center bg-[#56CAFF] bg-opacity-90 backdrop-blur-sm text-center">
+                <div class="my-6">
+                    <div class="mx-auto w-12 h-12 bg-green-500 rounded-full">
+                        <img src="./assets/jy_logo.png" alt="">
+                    </div>
+                </div>
+                <h1 class="text-5xl font-bold text-white mb-4 ">
+                    <img src="./assets/title.png" class="mx-auto" alt="" width="700">
+                </h1>
+                <!-- <p class="text-xl text-white mb-8">"The Truth Will Set You Free"<br>John 8:32</p> -->
+                <hr class="h-[2px] bg-white mb-8 w-[300px]">
+                <h2 class="text-3xl font-semibold text-white mb-4">Let's Interceed for</h2>
+                <h3 class="text-4xl font-bold text-white mb-8">Veritas</h3>
+                <div class="inline-block bg-white bg-opacity-30 rounded-full px-6 py-3">
+                    <span class="text-xl font-semibold text-white">500 Hours of Adoration</span>
+                    <span class="ml-2 text-white">↗</span>
+                </div>
+            </div>
+        </header>
+
+
+        <!-- live hour section  -->
+        <section
+            class="h-screen text-center min-h-screen bg-gradient-to-br from-blue-300 to-blue-500 flex items-center justify-center"
+            style="background-image: url('./assets/BG1.png');">
+            <div
+                class="w-full h-full flex items-center place-content-center place-items-center justify-center bg-[#FF5656] bg-opacity-90 backdrop-blur-sm text-center">
+                <div class="flex gap-10 m-auto items-end">
+                    <p
+                        class="text-[170px] h-[140px] font-bold text-white border-l-2 border-white pl-2 leading-[9.5rem]">
+                        35</p>
+                    <p class="text-white text-[30px] h-[140px] flex items-end text-left italic leading-10">hours of
+                        adoration <br>
+                        committed for
+                        Veritas
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- select hour section  -->
+        <section
+            class="h-screen text-center min-h-screen bg-gradient-to-br from-blue-300 to-blue-500 flex items-center justify-center"
+            style="background-image: url('./assets/BG1.png');">
+            <div
+                class="w-full h-full flex flex-col items-center place-content-center place-items-center justify-center bg-[#FFBB56] bg-opacity-90 backdrop-blur-sm text-center">
+                <h2 class="text-2xl text-gray-800 mb-6">add <br> <span class="font-semibold">your adoration hours</span>
+                </h2>
+                <div class="toggle-switch">
+                    <input type="checkbox" id="switch" class="toggle-input">
+                    <label for="switch" class="toggle-label">
+                        <span class="toggle-text toggle-text-left">Offline</span>
+                        <span class="toggle-text toggle-text-right">Online</span>
+                    </label>
+                </div>
+                <p class="text-sm text-white my-10 italic">
+                    *If you have less possibility for an offline adoration,<br>
+                    please go forward with online
+                </p>
+            </div>
+        </section>
+
+
+        <!-- form hour section  -->
+        <section
+            class="h-screen text-center bg-gradient-to-br from-blue-300 to-blue-500 flex items-center justify-center"
+            style="background-image: url('./assets/BG1.png');">
+            <div
+                class="w-full h-full flex flex-col items-center place-content-center place-items-center justify-center bg-[#fff] bg-opacity-90 backdrop-blur-sm text-center">
+                <form id="adorationForm" class="bg-white rounded-lg p-4 md:p-6 mb-8 w-full max-w-md">
+                    <h2 class="text-xl font-bold mb-4">Adoration Form</h2>
+                    <div class="mb-4">
+                        <label for="name" class="block mb-2">Name</label>
+                        <input type="text" id="name" name="name" class="w-full border rounded px-2 py-1" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="hours" class="block mb-2">Hours of Adoration</label>
+                        <input type="number" id="hours" name="hours" class="w-full border rounded px-2 py-1" required
+                            min="1">
+                    </div>
+                    <input type="hidden" id="adorationMode" name="adorationMode" value="offline">
+                    <button type="submit"
+                        class="bg-[#FFC267] text-black px-4 py-2 rounded-full font-bold hover:bg-[#FFB247] transition duration-300">Submit</button>
+                </form>
+
+                <div class="bg-gray-800 text-white text-left px-10 md:px-24 py-16 mb-8">
+                    <h2 class="text-xl italic font-bold mb-6">What is Veritas?</h2>
+                    <p class="italic font-regular text-[20px]"><span class="font-semibold">Veritas</span> is an initial
+                        programme exclusively
+                        designed
+                        for the
+                        Youth by
+                        <span class="font-semibold">Jesus Youth Palai
+                            Zone</span>. It
+                        is a
+                        golden opportunity to discover the real joy, beauty of prayer and truth which ultimately leads
+                        to an
+                        encounter with Jesus.
+                    </p>
+                    <p class="mt-2 font-bold">This is the moment... go for the truth...</p>
+                </div>
+
+                <div class="text-center flex mb-8 p-1 bg-[#FFC267] rounded-full ">
+                    <button class=" text-black px-3 text-xl font-bold">Register</button>
+                    <a href=""
+                        class="bg-white/70 px-2 h-[30px] w-[30px] flex justify-center items-center text-black rounded-full">
+                        <img src="./assets/Arrow.png" class="h-[10px]" alt="">
+                    </a>
+                </div>
+
+                <div class="text-left w-[90%] mt-[40px]">
+                    <p class="font-bold">For more details on registration :</p>
+                    <p>Sebin Jo Saji : <a href="tel:+919400389831" class="font-bold">+91 94003 89831</a> Shelin : <a
+                            href="tel:+919946845520" class="font-bold">+91 99468 45520</a></p>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- footer -->
+        <footer class=" text-center bg-gradient-to-br from-blue-300 to-blue-500 flex items-center justify-center"
+            style="background-image: url('./assets/BG1.png');">
+            <div
+                class="w-full h-full flex flex-col text-white items-center place-content-center place-items-center justify-center bg-[#4C4C4C]/90 bg-opacity-90 backdrop-blur-lg text-center">
+                <div class="mt-4 text-left w-[90%]">
+                    <h3 class="font-bold">Contact Us</h3>
+                    <p>Antony Joseph - General Coordinator</p>
+                    <p>Libin Abraham - CCT Coordinator</p>
+                </div>
+                <div class="m-4">
+                    <img src="./assets/jy_logo_white.png" class="mx-auto h-[35px]" alt="">
+                    <p class="mt-4 font-[300] text-[15px]">Copyright © Jesus Youth Kerala. All rights Reserved</p>
+                </div>
+            </div>
+        </footer>
+
+
+    </div>
+    <script>
+        const toggleSwitch = document.getElementById('switch');
+        const adorationModeInput = document.getElementById('adorationMode');
+        const adorationForm = document.getElementById('adorationForm');
+
+        toggleSwitch.addEventListener('change', function () {
+            adorationModeInput.value = this.checked ? 'online' : 'offline';
+        });
+
+        adorationForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+
+            // Here you would typically send this data to a server
+            console.log('Form submitted with data:', data);
+
+            // For demonstration, we'll just show an alert
+            alert(`Thank you, ${data.name}! Your ${data.adorationMode} adoration of ${data.hours} hours has been registered.`);
+
+            // Reset the form
+            this.reset();
+        });
+    </script>
+</body>
+
+</html>
