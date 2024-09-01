@@ -9,10 +9,16 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+        @font-face {
+            font-family: 'MonaSans';
+            src: url('./fonts/monasans/Mona-Sans.woff2') format('woff2');
+        }
+
         * {
             margin: 0;
             padding: 0;
             font-family: "Poppins", sans-serif;
+            scroll-behavior: smooth;
         }
 
         .toggle-switch {
@@ -253,7 +259,7 @@
                         <img src="./assets/jy_logo.png" alt="">
                     </div>
                 </div>
-                <h1 class="titile text-5xl font-bold text-white mb-4 ">
+                <h1 class="titile text-5xl font-bold text-white mb-4 w-[250px] md:w-[700px]">
                     <img src="./assets/title.png" class="mx-auto" alt="" width="700">
                 </h1>
                 <!-- <p class="text-xl text-white mb-8">"The Truth Will Set You Free"<br>John 8:32</p> -->
@@ -261,8 +267,9 @@
                 <h2 class="subtitle text-3xl font-semibold text-white mb-4">Let's Interceed for</h2>
                 <h3 class="subtitle text-4xl font-bold text-white mb-8">Veritas</h3>
                 <div class="scaleUp text-center w-fit mx-auto flex mb-8 p-1 bg-white bg-opacity-30 rounded-full">
-                    <button class="text-black px-10 text-[30px] font-bold">500 Hours of Adoration</button>
-                    <a href=""
+                    <button class="text-black px-5 md:px-10 md:text-[30px] font-semibold">500 Hours of
+                        Adoration</button>
+                    <a href="#liveHours"
                         class=" bg-white bg-opacity-30 px-2 h-[60px] w-[60px] flex justify-center items-center text-black rounded-full">
                         <img src="./assets/Arrow.png" class="h-[10px]" alt="">
                     </a>
@@ -272,14 +279,19 @@
 
 
         <!-- Inside your live hour section -->
-        <section class="text-center bg-gradient-to-br from-blue-300 to-blue-500 flex items-center justify-center"
+        <section id="liveHours"
+            class="text-center bg-gradient-to-br from-blue-300 to-blue-500 flex items-center justify-center"
             style="background-image: url('./assets/BG1.png');">
             <div
                 class="w-full h-full flex items-center place-content-center place-items-center justify-center bg-[#FF5656] bg-opacity-90 backdrop-blur-sm text-center py-20">
-                <div class="flex flex-wrap justify-center gap-10 m-auto items-end">
-                    <p id="totalHours"
+                <div class="flex text-white flex-wrap justify-center gap-10 m-auto items-end">
+                    <!-- <p id="totalHours"
                         class="appearLeftToRight text-[170px] h-[140px] font-bold text-white border-l-2 border-white pl-2 leading-[9.5rem]">
-                        0</p>
+                        0</p>of 500 -->
+                    <ruby id="totalHours"
+                        class="appearLeftToRight text-[170px] h-[140px] font-bold text-white border-l-2 border-white pl-2 leading-[9.5rem]">0
+                        <rt>out of 500</rt>
+                    </ruby>
                     <p
                         class="appearRightToLeft text-white text-[30px] h-[140px] flex items-end text-left italic leading-10">
                         hours of
@@ -358,8 +370,11 @@
 
                 <div class="w-[90%] py-10">
                     <div class="scaleUp text-center w-fit mx-auto flex mb-8 p-1 bg-[#FFC267] rounded-full">
-                        <button class="text-black px-10 text-[30px] font-bold">Register</button>
-                        <a href=""
+                        <button onclick="window.location.href='https://forms.gle/JiimaUUk94Y7Efkk6'"
+                            class="text-black px-10 text-[30px] font-bold">
+                            Register
+                        </button>
+                        <a href="https://forms.gle/JiimaUUk94Y7Efkk6"
                             class="bg-white/70 px-2 h-[60px] w-[60px] flex justify-center items-center text-black rounded-full">
                             <img src="./assets/Arrow.png" class="h-[10px]" alt="">
                         </a>
@@ -388,7 +403,7 @@
                 </div>
                 <div class="m-4">
                     <img src="./assets/jy_logo_white.png" class="mx-auto h-[35px]" alt="">
-                    <p class="mt-4 font-[300] text-[15px]">Copyright © Jesus Youth Kerala. All rights Reserved</p>
+                    <p class="mt-4 font-[300] text-[15px]">Copyright © Jesus Youth Pala. All rights Reserved</p>
                 </div>
             </div>
         </footer>
@@ -427,23 +442,13 @@
 
         async function calculateTotalAdorationHours() {
             try {
-                /*   const querySnapshot = await getDocs(collection(db, "adorations"));
-                   let totalHours = 0;
-   
-                   querySnapshot.forEach(doc => {
-                       const data = doc.data();
-                       totalHours += data.hours || 0;
-                   });
-   
-                   document.getElementById('totalHours').textContent = totalHours;*/
-
                 const adorationRef = collection(db, "adorations");
                 await onSnapshot(adorationRef, (querySnapshot) => {
                     let totalHours = 0;
                     querySnapshot.forEach((doc) => {
                         totalHours += doc.data().hours || 0;
                     });
-                    document.getElementById('totalHours').textContent = totalHours;
+                    document.getElementById('totalHours').innerHTML = totalHours + '<rt class="text-[12px]">out of 500</rt>';
                 });
 
             } catch (error) {
