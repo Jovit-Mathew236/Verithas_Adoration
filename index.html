@@ -337,12 +337,19 @@
                 <form id="adorationForm" class="bg-white rounded-lg p-4 md:p-6 my-8 w-full text-left max-w-md">
                     <h2 class="text-xl font-bold mb-2">Adoration Form</h2>
                     <p class="text-sm mb-4 text-[#7A7A7A]">Fill the form below to add your hours of adoration</p>
-                    <div class="mb-4 ">
+                    <div class="mb-4">
                         <label for="name" class="block font-semibold mb-2">Name</label>
                         <input type="text" id="name" name="name" class="w-full border rounded-md px-2 py-1" required>
                     </div>
                     <div class="mb-4">
-                        <label for="hours" class="block font-semibold mb-2">Hours of Adoration</label>
+                        <label for="timeUnit" class="block font-semibold mb-2">Time Unit</label>
+                        <select id="timeUnit" name="timeUnit" class="w-full border rounded-md px-2 py-1">
+                            <option value="hours">Hours</option>
+                            <option value="minutes">Minutes</option>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <label for="hours" class="block font-semibold mb-2">Adoration Time</label>
                         <input type="number" id="hours" name="hours" class="w-full border rounded-md px-2 py-1" required
                             min="1">
                     </div>
@@ -350,6 +357,7 @@
                     <button type="submit"
                         class="bg-[#FFC267] w-full text-black px-4 py-2 rounded-md font-bold hover:bg-[#FFB247] transition duration-300">Submit</button>
                 </form>
+
 
                 <div class="appearDownToUp bg-gray-800 text-white text-left px-10 md:px-24 py-16 mb-8">
                     <h2 class="appearDownToUp text-xl italic font-bold mb-6">What is Veritas?</h2>
@@ -451,9 +459,14 @@
                 await onSnapshot(adorationRef, (querySnapshot) => {
                     let totalHours = 0;
                     querySnapshot.forEach((doc) => {
-                        totalHours += doc.data().hours || 0;
+                        const data = doc.data();
+                        const hours = data.hours || 0;
+                        console.log("data is =>" + hours);
+                        //const timeUnit = data.timeUnit || 'hours';
+                        totalHours += hours;
+                        console.log(totalHours);
                     });
-                    document.getElementById('totalHours').innerHTML = totalHours + '<rt class="text-[12px]">out of 500</rt>';
+                    document.getElementById('totalHours').innerHTML = totalHours.toFixed(0) + '<rt class="text-[12px]">out of 500</rt>';
                 });
 
             } catch (error) {
@@ -461,7 +474,6 @@
             }
         }
 
-        // Call the function to calculate and display total hours
         calculateTotalAdorationHours();
 
         adorationForm.addEventListener('submit', async function (e) {
@@ -469,25 +481,28 @@
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
 
+            // Convert minutes to hours if needed
+            const hours = data.timeUnit === 'minutes' ? data.hours / 60 : data.hours;
+
             try {
-                // Send data to Firebase
                 const docRef = await addDoc(collection(db, "adorations"), {
                     name: data.name,
-                    hours: parseInt(data.hours),
+                    hours: parseFloat(hours),
                     adorationMode: data.adorationMode,
+                    timeUnit: data.timeUnit,
                     timestamp: new Date()
                 });
 
                 console.log("Document written with ID: ", docRef.id);
-                alert(`Thank you, ${data.name}! Your ${data.adorationMode} adoration of ${data.hours} hours has been registered.`);
+                alert(`Thank you, ${data.name}! Your ${data.adorationMode} adoration of ${hours} hours has been registered.`);
 
-                // Reset the form
                 this.reset();
             } catch (error) {
                 console.error("Error adding document: ", error);
                 alert("An error occurred while submitting your adoration. Please try again.");
             }
         });
+
     </script>
 </body>
 
